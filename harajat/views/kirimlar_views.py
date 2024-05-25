@@ -9,7 +9,7 @@ from harajat.serializers import KirimlarSerializer, KirimlarSumSerializer
 # CRUD
 class KirimlarList(generics.ListAPIView):
     serializer_class = KirimlarSerializer
-    permission_classes = [permissions.IsAuthenticated]
+    permission_classes = []
 
     def get_queryset(self):
         return Kirimlar.objects.filter(user=self.request.user)
@@ -18,18 +18,18 @@ class KirimlarList(generics.ListAPIView):
 class KirimlarDetail(generics.RetrieveAPIView):
     queryset = Kirimlar.objects.all()
     serializer_class = KirimlarSerializer
-    permission_classes = [permissions.IsAuthenticated]
+    permission_classes = []
 
 
 class KirimlarCreate(generics.CreateAPIView):
     queryset = Kirimlar.objects.all()
     serializer_class = KirimlarSerializer
-    permission_classes = [permissions.IsAuthenticated]
+    permission_classes = []
 
 
 class KirimlarUpdate(generics.UpdateAPIView):
     serializer_class = KirimlarSerializer
-    permission_classes = [permissions.IsAuthenticated]
+    permission_classes = []
 
     def get_queryset(self):
         return Kirimlar.objects.filter(user=self.request.user)
@@ -37,7 +37,7 @@ class KirimlarUpdate(generics.UpdateAPIView):
 
 class KirimlarDelete(generics.DestroyAPIView):
     serializer_class = KirimlarSerializer
-    permission_classes = [permissions.IsAuthenticated]
+    permission_classes = []
 
     def get_queryset(self):
         return Kirimlar.objects.filter(user=self.request.user)
@@ -49,11 +49,11 @@ class KirimlarDelete(generics.DestroyAPIView):
 class BugungiKirimlar(generics.ListAPIView):
     queryset = Kirimlar.kunlik_kirimlar()
     serializer_class = KirimlarSerializer
-    permission_classes = [permissions.IsAuthenticated]
+    permission_classes = []
 
 
 class KunlikKirimlarUmumiy(APIView):
-    permission_classes = [permissions.IsAuthenticated]
+    permission_classes = []
 
     def get(self, request, *args, **kwargs):
         total_cost = Kirimlar.kunlik_kirimlar_umumiy()
@@ -64,12 +64,12 @@ class KunlikKirimlarUmumiy(APIView):
 
 class OylikKirimlar(generics.ListAPIView):
     serializer_class = KirimlarSerializer
-    permission_classes = [permissions.IsAuthenticated]
+    permission_classes = []
     queryset = Kirimlar.oylik_kirimlar()
 
 
 class OylikKirimlarSum(APIView):
-    #permission_classes = [permissions.IsAuthenticated]
+    permission_classes = []
 
     def get(self, request, *args, **kwargs):
         total_cost = Kirimlar.oylik_kirimlar_umumiy()

@@ -1,5 +1,5 @@
 from django.urls import path
-from harajat.views import kirimlar_views, chiqimlar_views, products
+from harajat.views import kirimlar_views, chiqimlar_views
 urlpatterns = [
     path('chiqimlar/create/', chiqimlar_views.ChiqimlarCreate.as_view(), name='chiqimlar-create'),
     path('chiqimlar/<int:pk>/update/', chiqimlar_views.ChiqimlarUpdate.as_view(), name='chiqimlar-update'),
@@ -19,5 +19,5 @@ urlpatterns = [
     path('bugungi_kirimlar/umumiy/', kirimlar_views.KunlikKirimlarUmumiy.as_view(), name='bugungi-kirimlat-umumiy'),
     path('oylik_kirimlar/', kirimlar_views.OylikKirimlar.as_view(), name='oylik-kirimlar'),
     path('oylik_kirimlar/umumiy/', kirimlar_views.OylikKirimlarSum.as_view(), name='oylik-kirimlar-umumiy'),
-    #path('products/today/', products.ProductsList.as_view(), name='products-today'),
+
 ]

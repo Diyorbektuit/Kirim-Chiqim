@@ -1,13 +1,19 @@
-from .serializers import UserRegistrationSerializer
+from .serializers import TgUsersSerializer
 from rest_framework import generics, permissions
-from django.contrib.auth.models import User
-# Create your views here.
+from .models import TgUsers
 
 
-class RegisterView(generics.CreateAPIView):
-    queryset = User.objects.all()
-    serializer_class = UserRegistrationSerializer
+class TgUsersCreate(generics.CreateAPIView):
+    serializer_class = TgUsersSerializer
+    queryset = TgUsers.objects.all()
     permission_classes = [permissions.AllowAny]
+
+
+class TgUserList(generics.ListAPIView):
+    serializer_class = TgUsersSerializer
+    queryset = TgUsers.objects.all()
+    permission_classes = [permissions.AllowAny]
+
 
 
 
